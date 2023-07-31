@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Risk Assessment</title>
+    <style>
+        input{
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Risk Assessment</h1>
+    <form method="POST">
+        <table>
+            <tr>
+                <td><strong>Country</strong></td>
+                <td><strong>DDoS</strong></td>
+                <td><strong>Phishing</strong></td>
+                <td><strong>Physical Attack</strong></td>
+                <td><strong>Cloud Security</strong></td>
+            </tr>
+            {% for country in countries %}
+            <tr>
+                <td><input type="text" name="{{ country }}_country" value="{{ country }}" readonly></td>
+                <td><input type="number" name="{{ country }}_ddos_weight" min="1" max="10" value="1"></td>
+                <td><input type="number" name="{{ country }}_phishing_weight" min="1" max="10" value="1"></td>
+                <td><input type="number" name="{{ country }}_physical_attack_weight" min="1" max="10" value="1"></td>
+                <td><input type="number" name="{{ country }}_cloud_security_weight" min="1" max="10" value="1"></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <input type="submit" value="Calculate Risk">
+    </form>
+</body>
+</html>
